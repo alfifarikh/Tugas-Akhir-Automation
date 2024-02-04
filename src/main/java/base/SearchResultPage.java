@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.List;
+
 public class SearchResultPage extends BasePage{
     public SearchResultPage(WebDriver driver) {
         super(driver);
@@ -39,12 +41,12 @@ public class SearchResultPage extends BasePage{
     }
 
     public void chooseRefundableFares(){
-        try {
-            checkboxRefundableFares.isDisplayed();
-        } catch (NoSuchElementException ignored){
-            System.out.println("Element Refundable Fares Not Found");
-        }
         checkboxRefundableFares.click();
+    }
+
+    public boolean isShowRefundable() {
+        List<WebElement> elements = driver.findElements(By.xpath("//p[contains(text(),'Refundable Fares')]/../..//input"));
+        return elements.size() > 0;
     }
 
     public String checkSearchAndFilterResult(){

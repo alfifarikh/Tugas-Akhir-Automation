@@ -43,6 +43,9 @@ public class HomePageTest extends BaseTest{
         String actualReturnDate = searchResultPage.checkAppliedReturnDate();
         assertEquals(actualReturnDate, expectedReturnDate, "Applied Return Date");
 
+        boolean isShowRefundable = searchResultPage.isShowRefundable();
+
+        Assert.assertTrue(isShowRefundable, "Checkbox Refundable Fares is Showing");
         searchResultPage.chooseRefundableFares();
         String actualFilter = searchResultPage.checkSearchAndFilterResult();
         assertEquals(actualFilter, expectedFilter, "Applied Filter Result ");
